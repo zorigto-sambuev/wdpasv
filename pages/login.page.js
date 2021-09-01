@@ -2,25 +2,20 @@ import Page from './page';
 
 class LoginPage extends Page {
 
-    get inputUsername () { return $('#username') }
-    get inputPassword () { return $('#password') }
-    get btnSubmit () { return $('button[type="submit"]') }
-
-    /**
-     * a method to encapsule automation code to interact with the page
-     * e.g. to login using username and password
-     */
-    async login (username, password) {
-        await this.inputUsername.setValue(username);
+    get inputEmail() { return $('#normal_login_email') }
+    get inputPassword() { return $('#normal_login_password') }
+    get battonLogIn() { return $('.login-form-button')}
+    async login (email, password) {
+        await this.inputEmail.setValue(email);
         await this.inputPassword.setValue(password);
-        await this.btnSubmit.click();
+        await this.battonLogIn.click();
     }
 
     /**
      * overwrite specifc options to adapt it to page object
      */
     open () {
-        return super.open('login');
+        return super.open('/user/login');
     }
 }
 
