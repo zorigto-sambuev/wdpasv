@@ -1,3 +1,5 @@
+const {addCommands} = require('./helpers/setup.helper');
+
 exports.config = {
     specs: [
         './test/specs/**/*.js'
@@ -28,5 +30,9 @@ exports.config = {
     mochaOpts: {
         ui: 'bdd',
         timeout: 60000
+    },
+
+    before: async function (config, capabilities, specs) {
+        await addCommands();
     },
 }
